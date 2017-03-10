@@ -1,18 +1,22 @@
+/*A GLOBAL STATEMENT, NOT A PART OF DATA OR PROC STEPS*/
 title "Understanding basic data manipulation techniques in SAS";
 
+/*Writing output into a pdf*/
 ods pdf file = "/folders/myfolders/mystudy1/Problem_1.pdf";
+
+/*Creating a SAS data set*/
 DATA TRANSACTIONS1;
+
+/*Reading data into the SAS data set*/
 INFILE "/folders/myfolders/mystudy1/Point_of_Sale.txt" dlm = '|';
 INPUT TRANSACTION_ID NUM_OF_ITEMS @;
 
-
 DO ITEM_ID = 1 to NUM_OF_ITEMS;
-	input PROD_CODE $ UNITS PRICE @@;
-	COST = UNITS * PRICE;
-	output;
+	input PROD_CODE $ UNITS PRICE @@; *this  is a comment statement;;;;
+	COST = UNITS utput;
 	end;
 
-
+/*Subset of the original data set*/
 DATA TRANSACTIONS2;
 set transactions1;
 by TRANSACTION_ID;
@@ -38,7 +42,6 @@ do count = 1 to  NUM_OF_ITEMS;
 RUN;
 
 /*Printing Transactions*/
-
 PROC PRINT DATA=transactions2;
 title "TRANSACTIONS2 TABLE";
 RUN;
@@ -47,8 +50,9 @@ proc print data=transactions1;
 title "TRANSACTIONS1 TABLE";
 RUN;
 
+/*Analyzing frequencies of the data set*/ - /*This is a block comment*/
 PROC FREQ DATA=transactions2;
-TITLE "PROD1, PROD2 & PROD3";
+TITLE "PROD1, PROD2 & PROD3"; *current title statement overrides the previous title statement; 
 TABLES PROD1 PROD2 PROD3;
 
 proc freq data=transactions2;
