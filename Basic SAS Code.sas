@@ -12,7 +12,7 @@ INFILE "/folders/myfolders/mystudy1/Point_of_Sale.txt" dlm = '|';
 INPUT TRANSACTION_ID NUM_OF_ITEMS @;
 
 DO ITEM_ID = 1 to NUM_OF_ITEMS;
-	input PROD_CODE $ UNITS PRICE @@; *this  is a comment statement;;;;
+	input PROD_CODE $ UNITS PRICE @@; *this  is a comment statement;
 	COST = UNITS utput;
 	end;
 
